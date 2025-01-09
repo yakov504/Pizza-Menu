@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
      <Header/>
      <Menu/>
      <Footer/>
@@ -13,7 +13,7 @@ function App() {
 
 function Header(){
   return(
-    <div>
+    <div className='header'>
       <h1>-FAST REACT PIZZA CO.-</h1>
     </div>
   )
@@ -21,12 +21,19 @@ function Header(){
 
 function Menu(){
   return(
-    <div>
+    <main className='menu'>
       <h2>Our menu</h2>
-      <Pizza/>
-      <Pizza/>
-      <Pizza/>
-    </div>
+      <Pizza name = "Pizza Spinaci" 
+        ingredients = "tomato, mozarella, spinach, and ricotta cheese" 
+        photoName = "pizzas/spinaci.jpg"
+        price = {10}
+      />
+      <Pizza name = "Pizza Funghi" 
+        ingredients = "Tomato,mushrooms" 
+        photoName = "pizzas/funghi.jpg"
+        price = {12}
+      />
+    </main>
   )
 }
 
@@ -43,12 +50,13 @@ function Footer(){
    </footer>
   )
 }
-function Pizza(){
+function Pizza(props){
   return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="pizza"/>
-      <h2>Pizza Spinaci</h2>
-      <p>tomato, mozarella, spinach, and ricotta cheese</p>
+    <div className='pizza'>
+      <img src={props.photoName} alt={props.name}/>
+      <h2>{props.name}</h2>
+      <p>{props.ingredients}</p>
+      <span>{props.price + 3}</span>
     </div>    
   )
 }
